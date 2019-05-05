@@ -1,7 +1,7 @@
-from program_synthesis import RNN as rnn
-from program_synthesis import agent
-from program_synthesis import reward as r
-from  program_synthesis import utils
+import RNN as rnn
+import agent
+import reward as r
+import utils
 
 
 LEARNING_RATE = 0.000025
