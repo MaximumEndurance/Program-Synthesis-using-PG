@@ -2,6 +2,7 @@ import RNN as rnn
 import agent
 import reward as r
 import utils
+from string import ascii_lowercase
 
 
 LEARNING_RATE = 0.000025
@@ -16,23 +17,24 @@ char_to_ix = rnn.char_to_ind()
 # initialize lstm
 lstm = agent.lstm()
 
-for j in range(num_iterations):
-    code_string, grads = lstm.sample(j)
-    reward = r.get_reward(code_string)
-    #print("Iteration %d" % j + "    ", end = '')
-    #print(reward)
-    if(reward.code_output == reward.correct_output):
-        print("---------DDDDDDDDOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNEEEEEEEEEEEEEE-----------")
-        print(reward)
-        print(code_string)
-        print('Iteration: %d' % (j) + '\n')
-        print(lstm.sample(0))
-        break
-    gradient_ascent = utils.calc_gradient_ascent(grads, reward.episode_rewards, GAMMA, LEARNING_RATE)
-    lstm.update_params(gradient_ascent)
+for expected_string in ascii_lowercase
+    for j in range(num_iterations):
+        code_string, grads = lstm.sample(j)
+        reward = r.get_reward(code_string, expected_string)
+        #print("Iteration %d" % j + "    ", end = '')
+        #print(reward)
+        if(reward.code_output == reward.correct_output):
+            print("---------DDDDDDDDOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNEEEEEEEEEEEEEE-----------")
+            print(reward)
+            print(code_string)
+            print('Iteration: %d' % (j) + '\n')
+            print(lstm.sample(0))
+            break
+        gradient_ascent = utils.calc_gradient_ascent(grads, reward.episode_rewards, GAMMA, LEARNING_RATE)
+        lstm.update_params(gradient_ascent)
 
-    if j % 100 == 0:
-        print('Iteration: %d' % (j) + '\n')
-        print(lstm.sample(0))
-        print('\n')
+        if j % 100 == 0:
+            print('Iteration: %d' % (j) + '\n')
+            print(lstm.sample(0))
+            print('\n')
 
