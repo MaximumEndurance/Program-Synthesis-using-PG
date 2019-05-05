@@ -10,10 +10,6 @@ num_iterations = 50000
 char_to_ix = rnn.char_to_ind()
 # TODO: Task should be passed from here
 
-
-
-
-
 # # initialize rnn
 # parameters = rnn.init_parameters()
 
@@ -23,8 +19,12 @@ lstm = agent.lstm()
 for j in range(num_iterations):
     code_string, grads = lstm.sample(j)
     reward = r.get_reward(code_string)
-    print("Iteration %d" % j + "    ", end = '')
-    print(reward)
+    #print("Iteration %d" % j + "    ", end = '')
+    #print(reward)
+    if(reward.code_output == reward.correct_output):
+        print("---------DDDDDDDDOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNEEEEEEEEEEEEEE-----------")
+        print(reward)
+        break
     gradient_ascent = utils.calc_gradient_ascent(grads, reward.episode_rewards, GAMMA, LEARNING_RATE)
     lstm.update_params(gradient_ascent)
 
