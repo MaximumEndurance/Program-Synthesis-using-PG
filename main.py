@@ -25,6 +25,8 @@ for j in range(num_iterations):
         print("---------DDDDDDDDOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNEEEEEEEEEEEEEE-----------")
         print(reward)
         print(code_string)
+        print('Iteration: %d' % (j) + '\n')
+        print(lstm.sample(0))
         break
     gradient_ascent = utils.calc_gradient_ascent(grads, reward.episode_rewards, GAMMA, LEARNING_RATE)
     lstm.update_params(gradient_ascent)
