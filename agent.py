@@ -1,5 +1,5 @@
 import numpy as np
-from program_synthesis import utils
+import utils
 
 chars = ['>', '<', '+', '-', '.', ',', '[', ']', '\n']
 vocab_size = len(chars)
