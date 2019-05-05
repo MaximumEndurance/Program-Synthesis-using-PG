@@ -24,6 +24,7 @@ for j in range(num_iterations):
     if(reward.code_output == reward.correct_output):
         print("---------DDDDDDDDOOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNEEEEEEEEEEEEEE-----------")
         print(reward)
+        print(code_string)
         break
     gradient_ascent = utils.calc_gradient_ascent(grads, reward.episode_rewards, GAMMA, LEARNING_RATE)
     lstm.update_params(gradient_ascent)
